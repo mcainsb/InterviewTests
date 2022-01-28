@@ -1,0 +1,47 @@
+﻿<Window x:Class="ItemList.MainWindow" x:ClassModifier="internal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:ItemList.ViewModel"
+        xmlns:model="clr-namespace:ItemList.Model"
+        xmlns:local="clr-namespace:ItemList"
+        mc:Ignorable="d"
+        Title="Item List application" Height="450" Width="600"
+        WindowStartupLocation="CenterScreen"
+        d:DataContext="{d:DesignInstance Type=vm:MainWindowViewModel}">
+    <Border BorderBrush="Gray" BorderThickness="1" Margin="10">
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+            <ItemsControl ItemsSource="{Binding Items}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="{x:Type vm:DataItemViewModel}">
+                        <Border BorderBrush="LightGray" BorderThickness="1"
+                                Margin="5" Padding="8" x:Name="ItemBorder">
+                            <DockPanel LastChildFill="False">
+                                <TextBlock Text="{Binding Name}" FontSize="14"
+                                           DockPanel.Dock="Left"></TextBlock>
+                                <Button DockPanel.Dock="Right"
+                                        Command="{Binding DataContext.OpenForEditingCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                        CommandParameter="{Binding}"
+                                        Padding="5,3"
+                                        >Edit...</Button>
+                            </DockPanel>
+
+                        </Border>
+                        <DataTemplate.Triggers>
+                            <DataTrigger Binding="{Binding Status}" Value="{x:Static model:DataItemStatus.Pending}">
+                                <Setter TargetName="ItemBorder" Property="Background" Value="#FFFFF7A7"></Setter>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Status}" Value="{x:Static model:DataItemStatus.Open}">
+                                <Setter TargetName="ItemBorder" Property="Background" Value="#FFAEF6AD"></Setter>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Status}" Value="{x:Static model:DataItemStatus.Closed}">
+                                <Setter TargetName="ItemBorder" Property="Background" Value="#FFB9C7FF"></Setter>
+                            </DataTrigger>
+                        </DataTemplate.Triggers>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Border>
+</Window>
