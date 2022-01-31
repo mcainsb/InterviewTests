@@ -16,14 +16,14 @@ namespace Tests
         [TestCase("tbcanihjs", "cat")]
         [TestCase("bbabylkkj", "baby")]
         [TestCase("breadmaking", "bird")]
-        public void Should_find_scrambled_word(string input, string word)
+        public void ShouldFindScrambledWord(string input, string word)
         {
             Assert.AreEqual(word, ScrambledStringFinder.FindScrambledWord(input, _possibleWords));
         }
 
         [TestCase("baykkjl")]
         [TestCase("ccc")]
-        public void Should_return_null(string input)
+        public void ShouldReturnNull(string input)
         {
             Assert.Null(ScrambledStringFinder.FindScrambledWord(input, _possibleWords));
         }

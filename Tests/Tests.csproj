@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="WhenApplyingTemplate.cs" />
     <Compile Include="WhenBuyingBottles.cs" />
     <Compile Include="WhenFindingMissingNumber.cs" />
     <Compile Include="WhenFindingModeCharacter.cs" />
