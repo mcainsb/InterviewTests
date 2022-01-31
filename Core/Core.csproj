@@ -48,6 +48,7 @@
     <Compile Include="ModeCharacterFinder.cs" />
     <Compile Include="PalindromeIdentifier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScrambledStringFinder.cs" />
     <Compile Include="SecretSantaManager.cs" />
     <Compile Include="TemplateExpander.cs" />
   </ItemGroup>
