@@ -45,5 +45,13 @@ namespace Tests
 
             CollectionAssert.AreEqual(sequence, FizzBuzzer.Generate(1, 15));
         }
+
+        [TestCase]
+        public void ShouldReturnFizzBuzzSequence2()
+        {
+            var sequence = new[] { "16", "17", "Fizz", "19", "Buzz", "Fizz", "22", "23", "Fizz", "Buzz", "26", "Fizz", "28", "29", "FizzBuzz" };
+
+            CollectionAssert.AreEqual(sequence, FizzBuzzer.Generate(16, 30));
+        }
     }
 }
